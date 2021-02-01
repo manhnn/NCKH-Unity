@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - watermelon
+  - sun
+  - box2
+  - buttonplus
+  - buttonminus
+  - submitlevel4
+  - clearlevel4
+  - buttonNext
+  - buttontutorial
+  - buttonbacktutorial
+  - num1
+  - num2
+  - num6
+  - num8
+  - num17
+  - num20
+  - num60
+  - turtle
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
