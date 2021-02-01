@@ -1,0 +1,40 @@
+# Addition
+[Ll]ibrary/
+[Bb]uild/
+[Bb]uilds/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Ss]creenshots/
+[Rr]ecordings/
+#[Uu]ser[Ss]ettings/
+sysinfo.txt
+# Builds
+*.apk
+*.unitypackage
+# Visual Studio cache directory
+.vs/
+# Gradle cache directory
+.gradle/
+# OS generated
+.DS_Store
+# VS/MD solution and project files
+*.csproj
+*.pidb
+*.sln
+*.unityproj
+*.userprefs
+spine-csharp.csproj.meta
+spine-csharp.sln.meta
+VRMuseum/Assets/StreamingAssets/ExhibitionPaintings/
+VRMuseum/Assets/StreamingAssets/ExhibitionPaintings.meta
+VRMuseum/Assets/AssetBundles/
+VRMuseum/Assets/AssetBundles.meta
+Shared in
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
