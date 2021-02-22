@@ -238,9 +238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _NumberkeyText: {fileID: 525957043}
   _LevelText: {fileID: 1347930689}
-  _SuggestionIcon: {fileID: 0}
+  _SuggestionIcon: {fileID: 526427800}
   _TutuarialPanel: {fileID: 1119602853}
-  _TutuarialText: {fileID: 0}
+  _TutuarialText: {fileID: 498988360}
 --- !u!1 &243798929
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 526427803}
   - component: {fileID: 526427802}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SuggestIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -931,7 +931,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 526427803}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12645650}
+        m_MethodName: SetTutuarialPanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &526427803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,7 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.52156866, g: 0.8313726, b: 0.8000001, a: 1}
+  m_Color: {r: 0.5568628, g: 0.8980392, b: 0.8627451, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1124,7 +1135,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 588309849}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12645650}
+        m_MethodName: SetTutuarialPanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &588309849
 MonoBehaviour:
   m_ObjectHideFlags: 0

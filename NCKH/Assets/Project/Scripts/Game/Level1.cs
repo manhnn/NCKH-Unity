@@ -27,7 +27,6 @@ public class Level1 : MonoBehaviour
         Init();
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerClick();
@@ -35,6 +34,7 @@ public class Level1 : MonoBehaviour
 
     public void Init()
     {
+        UIController.instance.TutuarialText.text = "Bạn hãy nhìn thực tế xem quả nào ở bên ngoài to nhất";
         List<Vector3> positions = new List<Vector3>();
         positions.Add(new Vector3(-1.2f, 1.5f, 0f));
         positions.Add(new Vector3(1.2f, 0f, 0f));
@@ -65,27 +65,7 @@ public class Level1 : MonoBehaviour
                 {
                     GameController.instance.NumKey++;
                 }
-                FindObjectOfType<GameController>().LoadNextLevel();
-            }
-            else if (hitCollider != null && hitCollider.CompareTag("buttontutorial"))
-            {
-                UIController.instance.SuggestionIcon.SetActive(false);
-                UIController.instance.TutuarialPanel.SetActive(true);
-                if (GameController.instance.NumKey > 0)
-                {
-                    GameController.instance.NumKey--;
-                    UIController.instance.NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
-                    UIController.instance.TutuarialText.text = "Bạn hãy nhìn thực tế xem \n quả nào ở bên ngoài to nhất";
-                }
-                else
-                {
-                    UIController.instance.TutuarialText.text = "Bạn không có chìa khóa \n để mở gợi ý";
-                }
-            }
-            else if (hitCollider != null && hitCollider.CompareTag("buttonbacktutorial"))
-            {
-                UIController.instance.TutuarialPanel.SetActive(false);
-                UIController.instance.SuggestionIcon.SetActive(true);
+                GameController.instance.LoadNextLevel();
             }
             else if (hitCollider != null)
             {

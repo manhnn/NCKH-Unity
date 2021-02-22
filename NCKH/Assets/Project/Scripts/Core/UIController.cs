@@ -32,10 +32,26 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void SetTutuarialPanel(bool activeseft, string text = "")
+    public void SetTutuarialPanel(bool activeseft)
     {
-        TutuarialPanel.SetActive(activeseft);
-        TutuarialText.text = text;
+        if (activeseft)
+        {
+            SuggestionIcon.SetActive(false);
+            TutuarialPanel.SetActive(true);
+            if (GameController.instance.NumKey > 0)
+            {
+                GameController.instance.NumKey--;
+                NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
+            }
+            else
+            {
+                TutuarialText.text = "Bạn không có chìa khóa để mở gợi ý";
+            }
+        }
+        else
+        {
+            SuggestionIcon.SetActive(true);
+            TutuarialPanel.SetActive(false);
+        }
     }
-
 }
