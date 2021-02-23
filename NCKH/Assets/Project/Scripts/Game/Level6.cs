@@ -69,9 +69,9 @@ public class Level6 : MonoBehaviour
             {
                 if (check == true)
                 {
-                    GameController.instance.NumKey++;
+                    LevelController.instance.NumKey++;
                 }
-                FindObjectOfType<GameController>().LoadNextLevel();
+                FindObjectOfType<LevelController>().LoadNextLevel();
             }
             else if (hitCollider != null && hitCollider.CompareTag("buttontutorial"))
             {
@@ -79,10 +79,10 @@ public class Level6 : MonoBehaviour
                 panelTutorial.SetActive(true);
                 answerText.fontSize = 0;
                 answerText.characterSize = 0;
-                if (GameController.instance.NumKey > 0)
+                if (LevelController.instance.NumKey > 0)
                 {
-                    GameController.instance.NumKey--;
-                    UIController.instance.NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
+                    LevelController.instance.NumKey--;
+                    UIController.instance.NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
                     textTutorial.text = "Cần 1 đường để chia hình tròn \n thành 8 phần bằng nhau.";
                 }
                 else

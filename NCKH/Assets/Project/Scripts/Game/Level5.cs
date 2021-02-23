@@ -175,18 +175,18 @@ public class Level5 : MonoBehaviour
 
                 if (check == true)
                 {
-                    GameController.instance.NumKey++;
+                    LevelController.instance.NumKey++;
                 }
-                FindObjectOfType<GameController>().LoadNextLevel();
+                FindObjectOfType<LevelController>().LoadNextLevel();
             }
             else if (hitCollider != null && hitCollider.CompareTag("buttontutorial"))
             {
                 iconButtonTutorial.SetActive(false);
                 panelTutorial.SetActive(true);
-                if (GameController.instance.NumKey > 0)
+                if (LevelController.instance.NumKey > 0)
                 {
-                    GameController.instance.NumKey--;
-                    UIController.instance.NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
+                    LevelController.instance.NumKey--;
+                    UIController.instance.NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
                     textTutorial.text = "Để tôi nhắc lại nhé: \n 17, 2, 20, 60, 6, 1, 8. \n Bạn hãy nhớ thật kỹ.";
                 }
                 else
@@ -262,8 +262,8 @@ public class Level5 : MonoBehaviour
         yield return null;
 
         iconWrongAnswer.SetActive(false);
-        FindObjectOfType<GameController>().ChangeStage();
-        FindObjectOfType<GameController>().LoadNextLevel();
+        FindObjectOfType<LevelController>().ChangeStage();
+        FindObjectOfType<LevelController>().LoadNextLevel();
         ///vi load lai file check n se reset mat nen numKey sai
     }
 }

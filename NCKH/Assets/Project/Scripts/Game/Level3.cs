@@ -49,18 +49,18 @@ public class Level3 : MonoBehaviour
 
                 if (check == true)
                 {
-                    GameController.instance.NumKey++;
+                    LevelController.instance.NumKey++;
                 }
-                FindObjectOfType<GameController>().LoadNextLevel();
+                FindObjectOfType<LevelController>().LoadNextLevel();
             }
             else if (hitCollider != null && hitCollider.CompareTag("buttontutorial"))
             {
                 iconButtonTutorial.SetActive(false);
                 panelTutorial.SetActive(true);
-                if (GameController.instance.NumKey > 0)
+                if (LevelController.instance.NumKey > 0)
                 {
-                    GameController.instance.NumKey--;
-                    UIController.instance.NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
+                    LevelController.instance.NumKey--;
+                    UIController.instance.NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
                     textTutorial.text = "Bạn hãy nhìn thật kỹ \n các ống dẫn nước \n ở giữa các bình";
                 }
                 else

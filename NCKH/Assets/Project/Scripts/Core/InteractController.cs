@@ -1,18 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lean.Touch;
 
 public class InteractController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] List<LeanSelectable> _SelectObjects = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+

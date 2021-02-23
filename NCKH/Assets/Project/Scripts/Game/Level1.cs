@@ -63,9 +63,9 @@ public class Level1 : MonoBehaviour
             {
                 if (check == true)
                 {
-                    GameController.instance.NumKey++;
+                    LevelController.instance.NumKey++;
                 }
-                GameController.instance.LoadNextLevel();
+                LevelController.instance.LoadNextLevel();
             }
             else if (hitCollider != null)
             {

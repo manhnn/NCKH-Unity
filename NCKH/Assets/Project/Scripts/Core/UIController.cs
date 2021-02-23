@@ -12,12 +12,14 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject _SuggestionIcon = null;
     [SerializeField] GameObject _TutuarialPanel = null;
     [SerializeField] TMP_Text _TutuarialText = null;
+    [SerializeField] GameObject _SuccessPanel = null;
 
     public TMP_Text NumberkeyText { get => _NumberkeyText; set => _NumberkeyText = value; }
     public TMP_Text LevelText { get => _LevelText; set => _LevelText = value; }
     public GameObject SuggestionIcon { get => _SuggestionIcon; set => _SuggestionIcon = value; }
     public GameObject TutuarialPanel { get => _TutuarialPanel; set => _TutuarialPanel = value; }
     public TMP_Text TutuarialText { get => _TutuarialText; set => _TutuarialText = value; }
+    public GameObject SuccessPanel { get => _SuccessPanel; set => _SuccessPanel = value; }
 
     private void Awake()
     {
@@ -38,10 +40,10 @@ public class UIController : MonoBehaviour
         {
             SuggestionIcon.SetActive(false);
             TutuarialPanel.SetActive(true);
-            if (GameController.instance.NumKey > 0)
+            if (LevelController.instance.NumKey > 0)
             {
-                GameController.instance.NumKey--;
-                NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
+                LevelController.instance.NumKey--;
+                NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
             }
             else
             {

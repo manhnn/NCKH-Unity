@@ -70,9 +70,9 @@ public class Level4 : MonoBehaviour
 
                 if (check == true)
                 {
-                    GameController.instance.NumKey++;
+                    LevelController.instance.NumKey++;
                 }
-                FindObjectOfType<GameController>().LoadNextLevel();
+                FindObjectOfType<LevelController>().LoadNextLevel();
             }
             else if (hitCollider != null && hitCollider.CompareTag("buttontutorial"))
             {
@@ -80,10 +80,10 @@ public class Level4 : MonoBehaviour
                 panelTutorial.SetActive(true);
                 answerText.fontSize = 0;
                 answerText.characterSize = 0;
-                if (GameController.instance.NumKey > 0)
+                if (LevelController.instance.NumKey > 0)
                 {
-                    GameController.instance.NumKey--;
-                    UIController.instance.NumberkeyText.text = "Key: " + GameController.instance.NumKey.ToString();
+                    LevelController.instance.NumKey--;
+                    UIController.instance.NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
                     textTutorial.text = "Tôi đếm được \n 14 hình tam giác \n còn bạn thì sao?";
                 }
                 else
