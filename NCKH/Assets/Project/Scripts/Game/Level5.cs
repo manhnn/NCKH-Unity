@@ -262,8 +262,7 @@ public class Level5 : MonoBehaviour
         yield return null;
 
         iconWrongAnswer.SetActive(false);
-        FindObjectOfType<LevelController>().ChangeStage();
-        FindObjectOfType<LevelController>().LoadNextLevel();
+        LevelController.instance.LoadNextLevel();
         ///vi load lai file check n se reset mat nen numKey sai
     }
 }

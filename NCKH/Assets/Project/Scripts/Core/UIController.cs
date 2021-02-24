@@ -6,13 +6,23 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     public static UIController instance = null;
+    public delegate void Del(string message = "none");
     [Header("UI")]
     [SerializeField] TMP_Text _NumberkeyText;
     [SerializeField] TMP_Text _LevelText;
+
     [SerializeField] GameObject _SuggestionIcon = null;
     [SerializeField] GameObject _TutuarialPanel = null;
     [SerializeField] TMP_Text _TutuarialText = null;
+
     [SerializeField] GameObject _SuccessPanel = null;
+    [SerializeField] TMP_Text _SuccessText = null;
+
+    [SerializeField] Animator _Animator = null;
+    [SerializeField] GameObject _CorrectIcon = null;
+    [SerializeField] GameObject _WrongIcon = null;
+
+    bool _LevelCompleteFlag = false;
 
     public TMP_Text NumberkeyText { get => _NumberkeyText; set => _NumberkeyText = value; }
     public TMP_Text LevelText { get => _LevelText; set => _LevelText = value; }
@@ -34,6 +44,20 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void SetSuccessPanel(bool activeseft, string correct = "")
+    {
+        if (activeseft)
+        {
+            _LevelCompleteFlag = false;
+            if (correct != "") _SuccessText.text = correct;
+            SuccessPanel.SetActive(true);
+            if (LevelController.CurrentLevel == LevelController.ArchiedLevel)
+                LevelController.instance.NumKey++;
+        }
+        else
+            SuccessPanel.SetActive(false);
+    }
+
     public void SetTutuarialPanel(bool activeseft)
     {
         if (activeseft)
@@ -47,7 +71,7 @@ public class UIController : MonoBehaviour
             }
             else
             {
-                TutuarialText.text = "Bạn không có chìa khóa để mở gợi ý";
+                TutuarialText.text = "Bạn không có chìa khóa để mở gợi ý\nChơi màn mới để lấy chìa khóa";
             }
         }
         else
@@ -55,5 +79,36 @@ public class UIController : MonoBehaviour
             SuggestionIcon.SetActive(true);
             TutuarialPanel.SetActive(false);
         }
+    }
+
+    public void CorrectAnswer(Vector3 Pos)
+    {
+        if (!_LevelCompleteFlag)
+        {
+            _CorrectIcon.transform.position = Pos;
+            _Animator.SetTrigger("TriggerCorrect");
+            SetWaitForSeconds(2f, CallbackForAnswer);
+            _LevelCompleteFlag = true;
+        }
+    }
+    void CallbackForAnswer(string message = "none")
+    {
+        SetSuccessPanel(true);
+    }
+    public void SetWaitForSeconds(float sec, Del callback)
+    {
+        StartCoroutine(WaitFewSecond(sec, callback));
+    }
+    IEnumerator WaitFewSecond(float sec, Del callback)
+    {
+        yield return new WaitForSeconds(sec);
+        callback();
+    }
+
+    public void WrongAnswer(Vector3 Pos)
+    {
+        _WrongIcon.transform.position = Pos;
+        _Animator.SetTrigger("TriggerWrong");
+        Debug.Log(Pos);
     }
 }

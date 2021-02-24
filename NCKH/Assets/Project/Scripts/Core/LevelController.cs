@@ -7,15 +7,15 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController instance = null;
     [Header("Level")]
-    [SerializeField] int _CurrentLevel = 0;
+    public static int CurrentLevel = 1;
+    public static int ArchiedLevel = 1;
+    [SerializeField] Level _LevelComponent = null;
     [SerializeField] int _Numkey = 0;
     [Header("LoadLevel")]
     [SerializeField] List<GameObject> _ListLevel;
-    [SerializeField] List<GameObject> _PlayedListLevel;
     public int NumKey { get => _Numkey; set => _Numkey = value; }
-    public int CurrentLevel { get => _CurrentLevel; set => _CurrentLevel = value; }
-    public List<GameObject> PlayedListLevel { get => _PlayedListLevel; set => _PlayedListLevel = value; }
     public List<GameObject> ListLevel { get => _ListLevel; set => _ListLevel = value; }
+    public Level LevelComponent { get => _LevelComponent; set => _LevelComponent = value; }
 
     private void Awake()
     {
@@ -32,36 +32,39 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
-        LoadLevel(0);
+        //Defalt is first level
+        LoadLevel();
     }
 
     public void LoadNextLevel()
     {
-        LoadLevel(CurrentLevel + 1);
+        CurrentLevel++;
+        LoadLevel(CurrentLevel);
     }
 
-    private void TextUpdate()
+    private void TextUpdate(int level)
     {
-        UIController.instance.LevelText.text = "Level: " + (CurrentLevel + 1).ToString();
+        UIController.instance.LevelText.text = "Level: " + (level).ToString();
         UIController.instance.NumberkeyText.text = "Key: " + NumKey.ToString();
     }
 
-    public void LoadLevel(int level)
+    GameObject obj = null;
+    public void LoadLevel(int level = 1)
     {
-        //Index of list from 0;
-        CurrentLevel = level;
-        TextUpdate();
-        GameObject obj;
-        obj = Instantiate(ListLevel[CurrentLevel], new Vector3(0, 0, 0), Quaternion.identity);
-        PlayedListLevel.Add(obj);
-        ChangeStage();
+        UIController.instance.SetSuccessPanel(false);
+        TextUpdate(level);
+        ArchiedLevel = Mathf.Max(ArchiedLevel, CurrentLevel);
+        Destroy(obj);
+        obj = Instantiate(ListLevel[level - 1], new Vector3(0, 0, 0), Quaternion.identity);
+        LevelComponent = obj.GetComponent<Level>();
     }
 
-    public void ChangeStage()
+    public void LevelCorrect(Vector3 Pos)
     {
-
-        if (CurrentLevel - 1 >= 0)
-            PlayedListLevel[CurrentLevel - 1].SetActive(false);
-        PlayedListLevel[CurrentLevel].SetActive(true);
+        UIController.instance.CorrectAnswer(Pos);
+    }
+    public void LevelWrong(Vector3 Pos)
+    {
+        UIController.instance.WrongAnswer(Pos);
     }
 }
