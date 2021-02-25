@@ -59,9 +59,9 @@ public class LevelController : MonoBehaviour
         LevelComponent = obj.GetComponent<Level>();
     }
 
-    public void LevelCorrect(Vector3 Pos)
+    public void LevelCorrect(Vector3 Pos, float sec = 0f)
     {
-        UIController.instance.CorrectAnswer(Pos);
+        UIController.instance.CorrectAnswer(Pos, sec);
     }
     public void LevelWrong(Vector3 Pos)
     {

@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     [SerializeField] TMP_Text _NumberkeyText;
     [SerializeField] TMP_Text _LevelText;
 
+    [SerializeField] TMP_Text _HeadText = null;
+
     [SerializeField] GameObject _SuggestionIcon = null;
     [SerializeField] GameObject _TutuarialPanel = null;
     [SerializeField] TMP_Text _TutuarialText = null;
@@ -30,6 +32,7 @@ public class UIController : MonoBehaviour
     public GameObject TutuarialPanel { get => _TutuarialPanel; set => _TutuarialPanel = value; }
     public TMP_Text TutuarialText { get => _TutuarialText; set => _TutuarialText = value; }
     public GameObject SuccessPanel { get => _SuccessPanel; set => _SuccessPanel = value; }
+    public TMP_Text HeadText { get => _HeadText; set => _HeadText = value; }
 
     private void Awake()
     {
@@ -81,13 +84,13 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void CorrectAnswer(Vector3 Pos)
+    public void CorrectAnswer(Vector3 Pos, float sec = 0f)
     {
         if (!_LevelCompleteFlag)
         {
             _CorrectIcon.transform.position = Pos;
             _Animator.SetTrigger("TriggerCorrect");
-            SetWaitForSeconds(2f, CallbackForAnswer);
+            SetWaitForSeconds(sec, CallbackForAnswer);
             _LevelCompleteFlag = true;
         }
     }
@@ -109,6 +112,5 @@ public class UIController : MonoBehaviour
     {
         _WrongIcon.transform.position = Pos;
         _Animator.SetTrigger("TriggerWrong");
-        Debug.Log(Pos);
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Level1 : Level
 {
-    bool check = true;
-
     protected override void Start()
     {
         base.Start();

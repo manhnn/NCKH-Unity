@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level2 : MonoBehaviour
+public class Level2 : Level
 {
     [SerializeField] GameObject sun;
     [SerializeField] GameObject chicken;
@@ -10,28 +10,20 @@ public class Level2 : MonoBehaviour
     [SerializeField] GameObject dog;
     [SerializeField] GameObject pig;
 
-    [SerializeField] GameObject iconAccepted;
-    [SerializeField] GameObject iconWrongAnswer;
-    [SerializeField] GameObject iconButtonTutorial;
 
-    [SerializeField] GameObject panelFinish;
-    [SerializeField] GameObject panelTutorial;
-
-    [SerializeField] TextMesh textTutorial;
-
-    Vector3 scaleChange = new Vector3(.2f, .2f, 0f);
-
-    bool check = true;
-
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         Init();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Correct(Vector3 pos)
     {
-        PlayerClick();
+        base.Correct(pos);
+    }
+    public override void Wrong(Vector3 pos)
+    {
+        base.Wrong(pos);
     }
 
     public void Init()
@@ -52,98 +44,4 @@ public class Level2 : MonoBehaviour
         sun.transform.position = new Vector3(1.85f, 3f, 0f);
     }
 
-    public void PlayerClick()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 pos = Input.mousePosition;
-            Collider2D hitCollider = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pos));
-            if (hitCollider != null && hitCollider.CompareTag("sun"))
-            {
-                Accepted();
-            }
-            else if (hitCollider != null && hitCollider.CompareTag("buttonNext"))
-            {
-
-                if (check == true)
-                {
-                    LevelController.instance.NumKey++;
-                }
-                FindObjectOfType<LevelController>().LoadNextLevel();
-            }
-            else if (hitCollider != null && hitCollider.CompareTag("buttontutorial"))
-            {
-                iconButtonTutorial.SetActive(false);
-                panelTutorial.SetActive(true);
-                if (LevelController.instance.NumKey > 0)
-                {
-                    LevelController.instance.NumKey--;
-                    UIController.instance.NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
-                    textTutorial.text = "Mặt trời luôn luôn \n ở trên cao nhất rồi!";
-                }
-                else
-                {
-                    textTutorial.text = "Bạn không có chìa khóa \n để mở gợi ý";
-                }
-            }
-            else if (hitCollider != null && hitCollider.CompareTag("buttonbacktutorial"))
-            {
-                panelTutorial.SetActive(false);
-                iconButtonTutorial.SetActive(true);
-            }
-            else if (hitCollider != null)
-            {
-                WrongAnswer(hitCollider.transform.position);
-            }
-        }
-    }
-
-    public void Accepted()
-    {
-        //Debug.Log("Accepted");
-        iconAccepted.SetActive(true);
-
-        StartCoroutine(ScaleIconAcepted());
-    }
-    IEnumerator ScaleIconAcepted()
-    {
-        while (iconAccepted.transform.localScale.x < 3f && iconAccepted.transform.localScale.y < 3f)
-        {
-            iconAccepted.transform.localScale += scaleChange;
-            yield return null;
-        }
-        yield return new WaitForSeconds(1f);
-
-
-        panelFinish.SetActive(true);
-    }
-
-    public void WrongAnswer(Vector3 pos)
-    {
-        check = false;
-        iconWrongAnswer.SetActive(true);
-        iconWrongAnswer.transform.position = pos;
-
-        StartCoroutine(ScaleIconWrongAnswer());
-    }
-
-    IEnumerator ScaleIconWrongAnswer()
-    {
-        while (iconWrongAnswer.transform.localScale.x < 3f && iconWrongAnswer.transform.localScale.y < 3f)
-        {
-            iconWrongAnswer.transform.localScale += scaleChange;
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.1f);
-        while (iconWrongAnswer.transform.localScale.x > 0.1f && iconWrongAnswer.transform.localScale.y > 0.1f)
-        {
-            iconWrongAnswer.transform.localScale -= scaleChange;
-            yield return null;
-        }
-        yield return null;
-
-        iconWrongAnswer.SetActive(false);
-        //FindObjectOfType<GameController>().DestroyGameObj();
-        //FindObjectOfType<GameController>().NewTurn();
-    }
 }
