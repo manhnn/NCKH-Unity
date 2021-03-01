@@ -28,6 +28,7 @@ public class LevelController : MonoBehaviour
         {
             Destroy(this);
         }
+        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, true, true);
     }
 
     void Start()
@@ -38,7 +39,10 @@ public class LevelController : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        CurrentLevel++;
+        if (CurrentLevel < _ListLevel.Count)
+            CurrentLevel++;
+        else
+            Debug.Log("LoadEndScene");
         LoadLevel(CurrentLevel);
     }
 

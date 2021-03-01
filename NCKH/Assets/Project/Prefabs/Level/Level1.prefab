@@ -301,6 +301,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &2078430031020325976
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +531,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &3412748349268704476
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +796,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &5507332667549392202
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +851,7 @@ MonoBehaviour:
   - {fileID: 2078430031020325976}
   _HintText: "\u1EDE ngo\xE0i \u0111\u1EDDi th\u1EADt th\xEC qu\u1EA3 to nh\u1EA5t
     l\xE0 qu\u1EA3 ...?"
-  _CorrectText: Well-done!!!
+  _CorrectText: Wow!!
   _HeadText: "Qu\u1EA3 n\xE0o to nh\u1EA5t?"
   _Number: {fileID: 0}
   _CorrectNumber: -1
@@ -1091,3 +1094,4 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1

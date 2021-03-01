@@ -28,6 +28,9 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] float _MinScale = 0.5f;
     [SerializeField] float _TargetScale = 2.5f;
     float _CurrentScale = 1f;
+    [Header("Move")]
+    [SerializeField]
+    bool _BackWhileMove = true;
     Vector3 _FirstScale = Vector3.zero;
     Vector3 _FirstPosition = Vector3.zero;
     LeanDragTranslate _DragTranlate = null;
@@ -52,27 +55,22 @@ public class InteractableObject : MonoBehaviour
         if ((_InterectType & InteractionType.Move) != 0)
         {
             SetUpForMove();
-            Debug.Log("Move");
         }
         if ((_InterectType & InteractionType.Tap) != 0)
         {
             SetUpForTap();
-            Debug.Log("Tap");
         }
         if ((_InterectType & InteractionType.Scale) != 0)
         {
             SetUpForScale();
-            Debug.Log("Scale");
         }
         if ((_InterectType & InteractionType.Hold) != 0)
         {
             SetUpForHold();
-            Debug.Log("Hold");
         }
         if ((_InterectType & InteractionType.Swipe) != 0)
         {
             SetUpForSwipe();
-            Debug.Log("Swipe");
         }
     }
 
@@ -82,32 +80,23 @@ public class InteractableObject : MonoBehaviour
     }
 
     float time = 0;
-    bool _HandSelected = true;
     private void SetUpForMove()
     {
         _Selectable.OnSelect.AddListener(StopAllDOTween);
-        _Selectable.OnSelectUpdate.AddListener(UpdateForMove);
+        _Selectable.OnSelect.AddListener(StartForMove);
+
         _Selectable.OnDeselect.AddListener(() =>
         {
-            this.transform.DOMove(_FirstPosition, 0.5f);
+            _DragTranlate.enabled = false;
+            if (_BackWhileMove)
+            {
+                this.transform.DOMove(_FirstPosition, 0.5f);
+            }
         });
-        _HandSelected = false;
     }
-    private void UpdateForMove(LeanFinger leanFinger)
+    private void StartForMove(LeanFinger leanFinger)
     {
-        if ((_InterectType & InteractionType.Move) != 0)
-        {
-            if (_Selectable.IsSelected && !_HandSelected)
-            {
-                _DragTranlate.enabled = true;
-                _HandSelected = true;
-            }
-            else if (!_Selectable.IsSelected && _HandSelected)
-            {
-                _DragTranlate.enabled = false;
-                _HandSelected = false;
-            }
-        }
+        _DragTranlate.enabled = true;
     }
 
     void SetUpForTap()

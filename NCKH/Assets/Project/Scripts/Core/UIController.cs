@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject _SuggestionIcon = null;
     [SerializeField] GameObject _TutuarialPanel = null;
     [SerializeField] TMP_Text _TutuarialText = null;
+    [SerializeField] GameObject _LightFlash = null;
 
     [SerializeField] GameObject _SuccessPanel = null;
     [SerializeField] TMP_Text _SuccessText = null;
@@ -33,6 +34,7 @@ public class UIController : MonoBehaviour
     public TMP_Text TutuarialText { get => _TutuarialText; set => _TutuarialText = value; }
     public GameObject SuccessPanel { get => _SuccessPanel; set => _SuccessPanel = value; }
     public TMP_Text HeadText { get => _HeadText; set => _HeadText = value; }
+    public TMP_Text SuccessText { get => _SuccessText; set => _SuccessText = value; }
 
     private void Awake()
     {
@@ -52,7 +54,7 @@ public class UIController : MonoBehaviour
         if (activeseft)
         {
             _LevelCompleteFlag = false;
-            if (correct != "") _SuccessText.text = correct;
+            if (correct != "") SuccessText.text = correct;
             SuccessPanel.SetActive(true);
             if (LevelController.CurrentLevel == LevelController.ArchiedLevel)
                 LevelController.instance.NumKey++;

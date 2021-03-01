@@ -16,9 +16,13 @@ public class Level : MonoBehaviour
     [Header("ForNumber")]
     [SerializeField] TMP_Text _Number = null;
     [SerializeField] int _CorrectNumber = -1;
+    [Header("TapCount")]
+    [SerializeField] protected Lean.Touch.LeanFingerTap LeanFingerTap = null;
+    [SerializeField] protected int _TouchTapRequired = 2;
+    [SerializeField] protected int _TouchCount = 0;
 
     public GameObject[] InteractableObj { get => _InteractableObj; set => _InteractableObj = value; }
-    protected virtual void Start()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -29,10 +33,16 @@ public class Level : MonoBehaviour
             Destroy(instance.gameObject);
             instance = this;
         }
-        UIController.instance.TutuarialText.text = _HintText;
-        UIController.instance.SetSuccessPanel(false, _CorrectText);
-        UIController.instance.HeadText.text = _HeadText;
     }
+    protected virtual void Start()
+    {
+        UIController.instance.TutuarialText.text = _HintText;
+        UIController.instance.SuccessText.text = _CorrectText;
+        UIController.instance.HeadText.text = _HeadText;
+        LeanFingerTap = FindObjectOfType<Lean.Touch.LeanFingerTap>();
+        LeanFingerTap.OnCount.AddListener(Condition);
+    }
+
     public virtual void Correct(Vector3 pos)
     {
         UIController.instance.SetTutuarialPanel(false);
@@ -58,6 +68,19 @@ public class Level : MonoBehaviour
         {
             LevelController.instance.LevelWrong(new Vector3(0, 0));
         }
+    }
+
+    public void Condition(int arg0)
+    {
+        _TouchCount = arg0;
+        if (_TouchCount >= _TouchTapRequired)
+            StartCoroutine(RetoreTap());
+
+    }
+    IEnumerator RetoreTap()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _TouchCount = 0;
     }
 
 }

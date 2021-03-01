@@ -8,6 +8,7 @@ public class CanvasAddCamera : MonoBehaviour
     void Start()
     {
         canvas.worldCamera = Camera.main;
+        canvas.sortingLayerID = 1;
     }
 
 }
