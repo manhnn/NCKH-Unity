@@ -152,7 +152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a38fe08cc11035345b07c8c19b5b462b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -267,6 +267,9 @@ MonoBehaviour:
   _HeadText: "C\xF3 bao nhi\xEAu con ki\u1EBFn?"
   _Number: {fileID: 440759643672863774}
   _CorrectNumber: 3
+  LeanFingerTap: {fileID: 0}
+  _TouchTapRequired: 2
+  _TouchCount: 0
 --- !u!1 &7671040967226298039
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +634,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7075314585444771211}
+    - target: {fileID: 8485912850424007638, guid: cb3a1d85d23e1ce4a8877d7179f23263,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb3a1d85d23e1ce4a8877d7179f23263, type: 3}
 --- !u!224 &3205344222489807967 stripped

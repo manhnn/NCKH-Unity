@@ -22,6 +22,8 @@ public class Level : MonoBehaviour
     [SerializeField] protected int _TouchCount = 0;
 
     public GameObject[] InteractableObj { get => _InteractableObj; set => _InteractableObj = value; }
+    public TMP_Text Number { get => _Number; set => _Number = value; }
+
     private void Awake()
     {
         if (instance == null)
@@ -55,12 +57,35 @@ public class Level : MonoBehaviour
 
     public virtual void ChangeNumberButton(int amout)
     {
-        _Number.text = (int.Parse(_Number.text) + amout).ToString();
+        int num = (int.Parse(Number.text) + amout);
+        if (num <= 1e6 && num >= 0)
+            Number.text = num.ToString();
+    }
+
+    public virtual void AddNumberButton(int amout)
+    {
+        int num = int.Parse(Number.text);
+        num = num * 10 + amout;
+        if (num <= 1e6 && num >= 0)
+            Number.text = num.ToString();
+    }
+
+    public virtual void DeleteNumberButton()
+    {
+        int num = int.Parse(Number.text);
+        num = num / 10;
+        if (num <= 1e6 && num >= 0)
+            Number.text = num.ToString();
+    }
+
+    public virtual void ClearNumberButton()
+    {
+        Number.text = "0";
     }
 
     public virtual void ConfirmButton()
     {
-        if (int.Parse(_Number.text) == _CorrectNumber)
+        if (int.Parse(Number.text) == _CorrectNumber)
         {
             LevelController.instance.LevelCorrect(new Vector3(0, 0));
         }

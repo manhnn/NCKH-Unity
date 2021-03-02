@@ -90,6 +90,11 @@ public class InteractableObject : MonoBehaviour
             _DragTranlate.enabled = false;
             if (_BackWhileMove)
             {
+
+                if (!_ScaleFlag && Use)
+                    LevelController.instance.LevelCheck(true, this.transform.position, 1f);
+                else if (!_ScaleFlag)
+                    LevelController.instance.LevelCheck(false, this.transform.position);
                 this.transform.DOMove(_FirstPosition, 0.5f);
             }
         });
@@ -164,11 +169,11 @@ public class InteractableObject : MonoBehaviour
             this.transform.localScale = _FirstScale * _MaxScale;
         if (_CurrentScale < _MinScale)
             this.transform.localScale = _FirstScale * _MinScale;
-        if (_CurrentScale == _TargetScale)
+        if (Mathf.Abs(_CurrentScale - _TargetScale) <= 0.1f)
         {
             _ScaleFlag = true;
             _PinchScale.enabled = false;
-            Debug.Log("ScaleComplete");
+            LevelController.instance.LevelCheck(true, this.transform.position, 1f);
         }
     }
     void ListenerScaleUp(LeanFinger leanFinger)

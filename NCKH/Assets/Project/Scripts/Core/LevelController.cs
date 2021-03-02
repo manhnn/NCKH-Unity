@@ -63,6 +63,11 @@ public class LevelController : MonoBehaviour
         LevelComponent = obj.GetComponent<Level>();
     }
 
+    public void LevelCheck(bool iswin, Vector3 pos, float sec = 0)
+    {
+        if (iswin) LevelCorrect(pos, sec);
+        else LevelWrong(pos);
+    }
     public void LevelCorrect(Vector3 Pos, float sec = 0f)
     {
         UIController.instance.CorrectAnswer(Pos, sec);

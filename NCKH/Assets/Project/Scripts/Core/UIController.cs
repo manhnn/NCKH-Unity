@@ -90,6 +90,7 @@ public class UIController : MonoBehaviour
     {
         if (!_LevelCompleteFlag)
         {
+            AudioController.instance.PlayCorrectAudio();
             _CorrectIcon.transform.position = Pos;
             _Animator.SetTrigger("TriggerCorrect");
             SetWaitForSeconds(sec, CallbackForAnswer);
@@ -112,6 +113,7 @@ public class UIController : MonoBehaviour
 
     public void WrongAnswer(Vector3 Pos)
     {
+        AudioController.instance.PlayWrongAudio();
         _WrongIcon.transform.position = Pos;
         _Animator.SetTrigger("TriggerWrong");
     }
