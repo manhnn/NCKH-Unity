@@ -9,27 +9,20 @@ public class HomeController : MonoBehaviour
 
     public static string SCENE_NAME = "Home";
 
-    private void Awake()
+    [SerializeField]
+    GameObject _Setting = null;
+
+    public void LoadGameScene()
     {
-        if (instance != null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this);
-        }
+        SceneManager.LoadScene(GameController.SCENE_NAME);
     }
 
-    public void ReloadGameScene()
+    public void AddSettingScene()
     {
-        SceneManager.LoadScene(SCENE_NAME);
+        SceneManager.LoadScene(SettingController.SCENE_NAME, LoadSceneMode.Additive);
     }
-
-    public void LoadGame(string name)
+    public void QuitGame()
     {
-        SceneManager.LoadScene(name);
+        Application.Quit();
     }
-
 }

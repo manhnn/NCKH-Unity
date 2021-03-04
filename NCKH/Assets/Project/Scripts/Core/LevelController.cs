@@ -28,12 +28,11 @@ public class LevelController : MonoBehaviour
         {
             Destroy(this);
         }
-        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, true, true);
+        ArchiedLevel = GameConfigs.IntLevelKey;
     }
 
     void Start()
     {
-        //Defalt is first level
         LoadLevel();
     }
 

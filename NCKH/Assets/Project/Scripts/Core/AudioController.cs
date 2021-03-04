@@ -21,6 +21,8 @@ public class AudioController : MonoBehaviour
         {
             Destroy(instance);
         }
+        SetBFXVolumn();
+        SetSFXVolumn();
     }
     private void Start()
     {
@@ -50,5 +52,23 @@ public class AudioController : MonoBehaviour
     public void StopBackTrack()
     {
         _BackTrack.Stop();
+    }
+
+    public void ConfigSFXVolumn(float vol)
+    {
+        GameConfigs.FloatSFXVolumn = vol;
+    }
+    public void ConfigBFXVolumn(float vol)
+    {
+        GameConfigs.FloatBFXVolumn = vol;
+    }
+    public void SetSFXVolumn()
+    {
+        _CorrectAudio.volume = GameConfigs.FloatSFXVolumn;
+        _WrongAudio.volume = GameConfigs.FloatSFXVolumn;
+    }
+    public void SetBFXVolumn()
+    {
+        _BackTrack.volume = GameConfigs.FloatBFXVolumn;
     }
 }

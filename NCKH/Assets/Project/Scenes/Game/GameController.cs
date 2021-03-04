@@ -9,23 +9,18 @@ public class GameController : MonoBehaviour
 
     public static string SCENE_NAME = "Game";
 
-    private void Awake()
+    public void LoadHomeScene()
     {
-        if (instance != null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this);
-        }
+        SceneManager.LoadScene(HomeController.SCENE_NAME);
     }
 
     public void ReloadGameScene()
     {
         SceneManager.LoadScene(SCENE_NAME);
     }
-
+    public void AddSettingScene()
+    {
+        SceneManager.LoadScene(SettingController.SCENE_NAME, LoadSceneMode.Additive);
+    }
 
 }
