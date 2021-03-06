@@ -10,22 +10,27 @@ public class CreateBtn : MonoBehaviour
     [SerializeField] GameObject _NotDonePrefab = null;
     void Awake()
     {
-        GameObject tmp;
         for (int i = 1; i < LevelController.instance.ListLevel.Count; i++)
         {
+            GameObject tmp;
             if (i <= LevelController.ArchiedLevel)
             {
                 tmp = Instantiate(_DonePrefab);
-                tmp.GetComponent<Button>().onClick.AddListener(
+                tmp.name = string.Format("Btn{0}", i);
+                tmp.GetComponent<Button>().onClick.AddListener
+                (
                     () =>
                 {
-                    LevelController.instance.LoadLevel(i);
-                })
-            ;
+                    Debug.Log(tmp.name);
+                    LevelController.instance.LoadLevel(int.Parse((tmp.name[tmp.name.Length - 1]).ToString()));
+                }
+                )
+                ;
             }
             else
             {
                 tmp = Instantiate(_NotDonePrefab);
+                tmp.name = string.Format("Btnot{0}", i);
             }
             tmp.transform.SetParent(this.transform);
             tmp.transform.localScale = Vector3.one;

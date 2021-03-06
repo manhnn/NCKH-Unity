@@ -19,7 +19,7 @@ public class AudioController : MonoBehaviour
         }
         else
         {
-            Destroy(instance);
+            Destroy(this.gameObject);
         }
         SetBFXVolumn();
         SetSFXVolumn();
