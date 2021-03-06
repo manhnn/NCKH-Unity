@@ -16,13 +16,12 @@ public class CreateBtn : MonoBehaviour
             if (i <= LevelController.ArchiedLevel)
             {
                 tmp = Instantiate(_DonePrefab);
-                tmp.name = string.Format("Btn{0}", i);
+                tmp.name = string.Format("{0}", i);
                 tmp.GetComponent<Button>().onClick.AddListener
                 (
                     () =>
                 {
-                    Debug.Log(tmp.name);
-                    LevelController.instance.LoadLevel(int.Parse((tmp.name[tmp.name.Length - 1]).ToString()));
+                    LevelController.instance.LoadLevel(int.Parse(tmp.name.ToString()));
                 }
                 )
                 ;
@@ -30,7 +29,7 @@ public class CreateBtn : MonoBehaviour
             else
             {
                 tmp = Instantiate(_NotDonePrefab);
-                tmp.name = string.Format("Btnot{0}", i);
+                tmp.name = string.Format("{0}", i);
             }
             tmp.transform.SetParent(this.transform);
             tmp.transform.localScale = Vector3.one;

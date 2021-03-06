@@ -57,7 +57,10 @@ public class UIController : MonoBehaviour
             if (correct != "") SuccessText.text = correct;
             SuccessPanel.SetActive(true);
             if (LevelController.CurrentLevel == LevelController.ArchiedLevel)
+            {
                 LevelController.instance.NumKey++;
+                GameConfigs.IntStarKey = LevelController.instance.NumKey;
+            }
         }
         else
             SuccessPanel.SetActive(false);
@@ -72,6 +75,7 @@ public class UIController : MonoBehaviour
             if (LevelController.instance.NumKey > 0)
             {
                 LevelController.instance.NumKey--;
+                GameConfigs.IntStarKey = LevelController.instance.NumKey;
                 NumberkeyText.text = "Key: " + LevelController.instance.NumKey.ToString();
             }
             else

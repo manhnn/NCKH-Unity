@@ -9,9 +9,26 @@ public class GameController : MonoBehaviour
 
     public static string SCENE_NAME = "Game";
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     public void LoadHomeScene()
     {
         SceneManager.LoadScene(HomeController.SCENE_NAME);
+    }
+
+    public void LoadEndScene()
+    {
+        SceneManager.LoadScene(EndSetting.SCENE_NAME);
     }
 
     public void ReloadGameScene()
@@ -22,5 +39,9 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(SettingController.SCENE_NAME, LoadSceneMode.Additive);
     }
-
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }

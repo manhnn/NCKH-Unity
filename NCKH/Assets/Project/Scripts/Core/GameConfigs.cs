@@ -6,17 +6,30 @@ public static class GameConfigs
 {
     public static string LEVELKEY = "Level";
 
+    public static string STARKEY = "Star";
+
     public static string SFXVOLUMN = "SFXVolumn";
 
     public static string BFXVOLUMN = "BFXVolumn";
 
+    public static int IntStarKey
+    {
+        get => PlayerPrefs.GetInt(STARKEY, 1);
+        set
+        {
+            if (value >= 0)
+                PlayerPrefs.SetInt(STARKEY, value);
+            else
+                Debug.LogError("PlayerPrefs Errors");
+        }
+    }
 
     public static int IntLevelKey
     {
         get => PlayerPrefs.GetInt(LEVELKEY, 1);
         set
         {
-            if (value != 0)
+            if (value >= 1)
                 PlayerPrefs.SetInt(LEVELKEY, value);
             else
                 Debug.LogError("PlayerPrefs Errors");

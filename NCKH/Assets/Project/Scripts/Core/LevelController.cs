@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
             Destroy(this.gameObject);
         }
         ArchiedLevel = GameConfigs.IntLevelKey;
+        NumKey = GameConfigs.IntStarKey;
     }
 
     void Start()
@@ -38,10 +39,10 @@ public class LevelController : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (CurrentLevel < _ListLevel.Count)
+        if (CurrentLevel < _ListLevel.Count - 1)
             CurrentLevel++;
         else
-            Debug.Log("LoadEndScene");
+            GameController.instance.LoadEndScene();
         LoadLevel(CurrentLevel);
     }
 
@@ -80,7 +81,10 @@ public class LevelController : MonoBehaviour
 
     public void BackToMenu()
     {
-        ArchiedLevel++;
+        if (ArchiedLevel < _ListLevel.Count - 1)
+            ArchiedLevel++;
+        else
+            GameController.instance.LoadHomeScene();
         GameConfigs.IntLevelKey = ArchiedLevel;
         GameController.instance.LoadHomeScene();
     }

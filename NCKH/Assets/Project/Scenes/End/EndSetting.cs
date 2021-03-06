@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class HomeController : MonoBehaviour
+public class EndSetting : MonoBehaviour
 {
-    public static HomeController instance = null;
+    public static EndSetting instance = null;
 
-    public static string SCENE_NAME = "Home";
+    public static string SCENE_NAME = "End";
 
     private void Awake()
     {
@@ -20,16 +20,17 @@ public class HomeController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    public void LoadHomeScene()
+    {
+        SceneManager.LoadScene(HomeController.SCENE_NAME);
+        Debug.Log("Home");
+    }
 
     public void LoadGameScene()
     {
         SceneManager.LoadScene(GameController.SCENE_NAME);
     }
 
-    public void AddSettingScene()
-    {
-        SceneManager.LoadScene(SettingController.SCENE_NAME, LoadSceneMode.Additive);
-    }
     public void QuitGame()
     {
         Debug.Log("Quit");
