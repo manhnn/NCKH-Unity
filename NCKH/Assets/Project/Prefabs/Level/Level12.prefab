@@ -370,3 +370,5 @@ MonoBehaviour:
   _Number: {fileID: 0}
   _CorrectNumber: -1
   LeanFingerTap: {fileID: 0}
+  _TouchTapRequired: 2
+  _TouchCount: 0

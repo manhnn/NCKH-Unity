@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SettingController : MonoBehaviour
 {
     public static SettingController instance = null;
+    [SerializeField] Slider _SFXSlider = null;
+    [SerializeField] Slider _BFXSlider = null;
 
     public static string SCENE_NAME = "Setting";
+    private void Awake()
+    {
+        _SFXSlider.value = GameConfigs.FloatSFXVolumn;
+        _BFXSlider.value = GameConfigs.FloatBFXVolumn;
+    }
 
     public void LoadHomeScene()
     {
@@ -27,7 +35,6 @@ public class SettingController : MonoBehaviour
     public void SetSFX(float vol)
     {
         GameConfigs.FloatSFXVolumn = vol;
-        Debug.Log(GameConfigs.FloatSFXVolumn);
     }
     public void SetBFX(float vol)
     {

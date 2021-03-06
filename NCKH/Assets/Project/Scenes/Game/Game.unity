@@ -3681,8 +3681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19abe23710c272444ae41500aedc89e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LevelComponent: {fileID: 7075314585444771211, guid: 4e57f3e86f0fa064fb871b8b78f57191,
-    type: 3}
+  _LevelComponent: {fileID: 0}
   _Numkey: 1
   _ListLevel:
   - {fileID: 3201476040050677574, guid: c160592efe4146142ad9d8cd34965a05, type: 3}

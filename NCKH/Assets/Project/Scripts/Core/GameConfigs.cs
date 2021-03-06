@@ -28,10 +28,21 @@ public static class GameConfigs
         get => PlayerPrefs.GetFloat(SFXVOLUMN, 0.5f);
         set
         {
-            if (value >= 0 && value <= 1)
-                PlayerPrefs.SetFloat(SFXVOLUMN, value);
+            if (AudioController.instance != null)
+            {
+                if (value >= 0 && value <= 1)
+                {
+                    PlayerPrefs.SetFloat(SFXVOLUMN, value);
+                    AudioController.instance.SetSFXVolumn();
+
+                }
+                else
+                    Debug.LogError("PlayerPrefs Errors");
+            }
             else
-                Debug.LogError("PlayerPrefs Errors");
+            {
+                Debug.LogError("There is no AudioController");
+            }
         }
     }
 
@@ -40,10 +51,20 @@ public static class GameConfigs
         get => PlayerPrefs.GetFloat(BFXVOLUMN, 0.5f);
         set
         {
-            if (value >= 0 && value <= 1)
-                PlayerPrefs.SetFloat(BFXVOLUMN, value);
+            if (AudioController.instance != null)
+            {
+                if (value >= 0 && value <= 1)
+                {
+                    PlayerPrefs.SetFloat(BFXVOLUMN, value);
+                    AudioController.instance.SetBFXVolumn();
+                }
+                else
+                    Debug.LogError("PlayerPrefs Errors");
+            }
             else
-                Debug.LogError("PlayerPrefs Errors");
+            {
+                Debug.LogError("There is no AudioController");
+            }
         }
     }
 }

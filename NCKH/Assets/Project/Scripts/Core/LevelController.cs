@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController instance = null;
     [Header("Level")]
-    public static int CurrentLevel = 1;
+    public static int CurrentLevel = 0;
     public static int ArchiedLevel = 1;
     [SerializeField] Level _LevelComponent = null;
     [SerializeField] int _Numkey = 0;
@@ -52,13 +52,13 @@ public class LevelController : MonoBehaviour
     }
 
     GameObject obj = null;
-    public void LoadLevel(int level = 1)
+    public void LoadLevel(int level = 0)
     {
         UIController.instance.SetSuccessPanel(false);
         TextUpdate(level);
         ArchiedLevel = Mathf.Max(ArchiedLevel, CurrentLevel);
         Destroy(obj);
-        obj = Instantiate(ListLevel[level - 1], new Vector3(0, 0, 0), Quaternion.identity);
+        obj = Instantiate(ListLevel[level], new Vector3(0, 0, 0), Quaternion.identity);
         LevelComponent = obj.GetComponent<Level>();
     }
 
