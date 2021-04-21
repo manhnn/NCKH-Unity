@@ -179,8 +179,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _HintText: "Ai ch\u1EE9 ph\u1EA3i con n\xE0o th\u1EAFng \u0111\xE2u nh\u1EC9"
-  _CorrectText: "C\xF3 h\u01A1i \u1EA3o ha !"
+  _HintText: "Ai l\xE0 con ng\u01B0\u1EDDi nh\u1EC9?"
+  _CorrectText: Yeahh!!
   _HeadText: "Ai th\u1EAFng?"
   _Number: {fileID: 0}
   _CorrectNumber: 8
