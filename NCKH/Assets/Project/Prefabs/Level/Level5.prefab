@@ -262,6 +262,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &6223330071246080818
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +559,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &6223330071513983474
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +983,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &6223330071761976857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1267,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &6223330072486290926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6223330072486290913}
-  - component: {fileID: 6223330072486290912}
+  - component: {fileID: 6330415032795982670}
   m_Layer: 0
   m_Name: Level5
   m_TagString: Untagged
@@ -1299,7 +1303,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6223330072486290912
+--- !u!114 &6330415032795982670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1308,17 +1312,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6223330072486290926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd6b928c3e5cfa4da560dbc16085d21, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a994e25c374ed14faaa58d06a71b769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _InteractableObj: []
-  _HintText: "T\u1EA5t c\u1EA3 \u0111\u1EC1u c\xF3 th\u1EC3 \u1EDF d\u01B0\u1EDBi
-    n\u01B0\u1EDBc nh\u01B0ng m\xF4i tr\u01B0\u1EDDng kh\xE1c th\xEC sao?"
-  _CorrectText: Well-done!!!
-  _HeadText: "Con v\u1EADt kh\xE1c bi\u1EC7t v\u1EDBi c\xE1c con c\xF2n l\u1EA1i?!"
+  _HintText: "R\xF9a b\xF2 \u0111\u01B0\u1EE3c, r\u1EAFn ch\u01B0\u1EDDn \u0111\u01B0\u1EE3c,
+    cua b\xF2 \u0111\u01B0\u1EE3c, ch\u1EAFc l\xE0 c\xE1 heo c\u0169ng l\xEAn b\u1EDD
+    \u0111\u01B0\u1EE3c th\xF4i!"
+  _CorrectText: Yeaahh!
+  _HeadText: "T\xECm s\u1EF1 kh\xE1c bi\u1EC7t n\xE0o?!"
   _Number: {fileID: 0}
   _CorrectNumber: -1
-  dolphin: {fileID: 6223330071246080818}
-  crab: {fileID: 6223330071513983474}
-  snake: {fileID: 6223330071761976857}
-  turtle: {fileID: 6223330070861995971}
+  LeanFingerTap: {fileID: 0}
+  _TouchTapRequired: 2
+  _TouchCount: 0
