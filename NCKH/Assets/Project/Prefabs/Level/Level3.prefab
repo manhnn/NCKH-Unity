@@ -125,11 +125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _InterectType: 1
-  _Use: 1
+  _Use: 0
   _TimeToChange: 2
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &5741181124928012235
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,11 +256,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _InterectType: 1
-  _Use: 0
+  _Use: 1
   _TimeToChange: 2
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &5741181125008431388
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +392,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &5741181125303017345
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +604,7 @@ MonoBehaviour:
   _MaxScale: 2.5
   _MinScale: 0.5
   _TargetScale: 2.5
+  _BackWhileMove: 1
 --- !u!1 &5741181125931985642
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,11 +654,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _InteractableObj: []
-  _HintText: "Th\xF9ng 2 \u1EA5y !!!!"
+  _HintText: "Th\xF9ng 1 \u1EA5y !!!!"
   _CorrectText: Well-done!!!
   _HeadText: 
   _Number: {fileID: 0}
   _CorrectNumber: -1
+  LeanFingerTap: {fileID: 0}
+  _TouchTapRequired: 2
+  _TouchCount: 0
   box1: {fileID: 5741181124928012235}
   box2: {fileID: 5741181124636325386}
   box3: {fileID: 5741181125008431388}
